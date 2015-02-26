@@ -14,3 +14,4 @@ Alguns metodos para estender as strings
 	Console.WriteLine("Cleyton Ferrari".SplitAndTrim(' ').First());//Cleyton
 	Console.WriteLine("Cleyton Ferrari".Contains("Ferrari"));//True
 	Console.WriteLine("Cleyton".Limit(5));//Cleyt
+	Console.WriteLine(string.Equals("César".RemoveDiacritics(),"Cesar".RemoveDiacritics()));//True
