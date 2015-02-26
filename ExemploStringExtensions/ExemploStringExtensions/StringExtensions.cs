@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -149,6 +150,17 @@ namespace ExemploStringExtensions
         {
             var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
             return Encoding.ASCII.GetString(bytes);
+        }
+        /// <summary>
+        ///  Remove acentos
+        /// </summary>
+        public static string RemoveDiacritics(this string text)
+        {
+            return string.Concat(
+                text.Normalize(NormalizationForm.FormD)
+                .Where(ch => CharUnicodeInfo.GetUnicodeCategory(ch) !=
+                                              UnicodeCategory.NonSpacingMark)
+              ).Normalize(NormalizationForm.FormC);
         }
     }
 }
